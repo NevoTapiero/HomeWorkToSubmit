@@ -36,21 +36,25 @@ public class HomeWork2 {
     }
     public static int Workhours(){
         Scanner s = new Scanner(System.in);
-        int h, m, h1, m1, longesttime = 0, day = 0, longestday = 0;
-        for(int i = 0; i <= 7; i++){
-            day++;
+        int h, m, h1, m1, longesttime = 0, day = 0, longestday = 0, finaltime = 0, n = 1;
+        for(int i = 0; i < 7; i++){
             System.out.println("when Ploni started to work today, hour alone and minuets alone");
             h = s.nextInt();
             m = s.nextInt();
             System.out.println("when Ploni finished to work today, hour alone and minuets alone");
             h1 = s.nextInt();
             m1 = s.nextInt();
-            int finaltime = Timedifference(h, m ,h1 ,m1);
-            longesttime = finaltime;
-            if (longesttime < finaltime) {
+            finaltime = Timedifference(h, m ,h1 ,m1);
+            if(n > 0){
+                longesttime = finaltime;
+                n = 0;
+            }
+            day++;
+            if (finaltime > longesttime) {
                 longesttime = finaltime;
                 longestday = day;
             }
+
         }
         return longestday;
     }
